@@ -1,0 +1,417 @@
+{% extends "Users/base_student.html"%}
+{% block content %}
+<div class="wrapper">
+  <!-- Sidebar  -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h2>Learning Management System</h2>
+    </div>
+
+    <ul class="list-unstyled components">
+      <li>
+        <a href="{% url 'dashboard-student' %}"><i class="fas fa-home mr-2"></i>Home</a>
+      </li>
+      <li>
+        <a href="{% url 'dashboard-transcript' %}"><i class="fas fa-clipboard mr-2"></i>Transcripts</a>
+      </li>
+      <li>
+        <a href="{% url 'dashboard-course-enrolled' %}"><i class="fas fa-clipboard-check mr-2"></i>Course Enrolled</a>
+      </li>
+      <li class="active">
+        <a href="{% url 'dashboard-study-plan' %}"><i class="fas fa-clipboard-list mr-2"></i>Study Plan</a>
+      </li>
+      <li>
+        <a href="{% url 'dashboard-course-material' %}"><i class="fas fa-download mr-2"></i>Course Material</a>
+      </li>
+      <li>
+        <a href="{% url 'dashboard-attendance' %}"><i class="fas fa-user-check mr-2"></i>Attendance</a>
+      </li>
+      <li>
+        <a href="{% url 'dashboard-notifications' %}"><i class="fas fa-bullhorn mr-2"></i>Notifications</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Page Content  -->
+  <div id="content">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button type="button" id="sidebarCollapse" class="btn btn-info">
+          <i class="fas fa-bars"></i>
+        </button>
+        <button type="button" class="btn btn-info">
+          <a href="{% url 'login-student' %}">Logout</a>
+        </button>
+      </div>
+    </nav>
+
+    <div class="container text-center">
+      <h1 class="mb-4">
+        Study Plan
+      </h1>
+      <div class="row">
+        <div class="col  col-bg-9" style="margin-top:15px; margin-bottom:15px;">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Semester 01</h2>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table tablesorter " id="">
+                  <thead class=" text-primary">
+                    <tr>
+                      <th style="color: #17a2b8;">
+                        Course Code
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Course Name
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Credit Hours
+                      </th>
+                    </tr>
+                  </thead>
+                  {% for data in myresult %}
+                  {% if data.offer_in == "1st" %}
+                  <tbody>
+                    <tr>
+                      <td>
+                        {{data.course_no}}
+                      </td>
+                      <td>
+                        {{data.course_title}}
+                      </td>
+                      <td>
+                        {{data.credit_hours}}
+                      </td>
+                    </tr>
+                  </tbody>
+                  {% endif %}
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col  col-bg-9" style="margin-top:15px; margin-bottom:15px;">
+          <div class="card ">
+            <div class="card-header">
+              <h2 class="card-title">Semester 02</h2>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table tablesorter " id="">
+                  <thead class=" text-primary">
+                    <tr>
+                      <th style="color: #17a2b8;">
+                        Course Code
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Course Name
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Credit Hours
+                      </th>
+                    </tr>
+                  </thead>
+                  {% for data in myresult %}
+                  {% if data.offer_in == "2nd" %}
+                  <tbody>
+                    <tr>
+                      <td>
+                        {{data.course_no}}
+                      </td>
+                      <td>
+                        {{data.course_title}}
+                      </td>
+                      <td>
+                        {{data.credit_hours}}
+                      </td>
+                    </tr>
+                  </tbody>
+                  {% endif %}
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col col-bg-9" style="margin-top:15px; margin-bottom:15px;">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Semester 03</h2>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table tablesorter " id="">
+                  <thead class=" text-primary">
+                    <tr>
+                      <th style="color: #17a2b8;">
+                        Course Code
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Course Name
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Credit Hours
+                      </th>
+                    </tr>
+                  </thead>
+                  {% for data in myresult %}
+                  {% if data.offer_in == "3rd" %}
+                  <tbody>
+                    <tr>
+                      <td>
+                        {{data.course_no}}
+                      </td>
+                      <td>
+                        {{data.course_title}}
+                      </td>
+                      <td>
+                        {{data.credit_hours}}
+                      </td>
+                    </tr>
+                  </tbody>
+                  {% endif %}
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col col-bg-9" style="margin-top:15px; margin-bottom:15px;">
+          <div class="card ">
+            <div class="card-header">
+              <h2 class="card-title">Semester 04</h2>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table tablesorter " id="">
+                  <thead class=" text-primary">
+                    <tr>
+                      <th style="color: #17a2b8;">
+                        Course Code
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Course Name
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Credit Hours
+                      </th>
+                    </tr>
+                  </thead>
+                  {% for data in myresult %}
+                  {% if data.offer_in == "4th" %}
+                  <tbody>
+                    <tr>
+                      <td>
+                        {{data.course_no}}
+                      </td>
+                      <td>
+                        {{data.course_title}}
+                      </td>
+                      <td>
+                        {{data.credit_hours}}
+                      </td>
+                    </tr>
+                  </tbody>
+                  {% endif %}
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container text-center">
+      <div class="row">
+        <div class="col col-bg-9" style="margin-top:15px; margin-bottom:15px;">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Semester 05</h2>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table tablesorter " id="">
+                  <thead class=" text-primary">
+                    <tr>
+                      <th style="color: #17a2b8;">
+                        Course Code
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Course Name
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Credit Hours
+                      </th>
+                    </tr>
+                  </thead>
+                  {% for data in myresult %}
+                  {% if data.offer_in == "5th" %}
+                  <tbody>
+                    <tr>
+                      <td>
+                        {{data.course_no}}
+                      </td>
+                      <td>
+                        {{data.course_title}}
+                      </td>
+                      <td>
+                        {{data.credit_hours}}
+                      </td>
+                    </tr>
+                  </tbody>
+                  {% endif %}
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col col-bg-9" style="margin-top:15px; margin-bottom:15px;">
+          <div class="card ">
+            <div class="card-header">
+              <h2 class="card-title">Semester 06</h2>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table tablesorter " id="">
+                  <thead class=" text-primary">
+                    <tr>
+                      <th style="color: #17a2b8;">
+                        Course Code
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Course Name
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Credit Hours
+                      </th>
+                    </tr>
+                  </thead>
+                  {% for data in myresult %}
+                  {% if data.offer_in == "6th" %}
+                  <tbody>
+                    <tr>
+                      <td>
+                        {{data.course_no}}
+                      </td>
+                      <td>
+                        {{data.course_title}}
+                      </td>
+                      <td>
+                        {{data.credit_hours}}
+                      </td>
+                    </tr>
+                  </tbody>
+                  {% endif %}
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container text-center">
+      <div class="row">
+        <div class="col col-bg-9" style="margin-top:15px; margin-bottom:15px;">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Semester 07</h2>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table tablesorter " id="">
+                  <thead class=" text-primary">
+                    <tr>
+                      <th style="color: #17a2b8;">
+                        Course Code
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Course Name
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Credit Hours
+                      </th>
+                    </tr>
+                  </thead>
+                  {% for data in myresult %}
+                  {% if data.offer_in == "7th" %}
+                  <tbody>
+                    <tr>
+                      <td>
+                        {{data.course_no}}
+                      </td>
+                      <td>
+                        {{data.course_title}}
+                      </td>
+                      <td>
+                        {{data.credit_hours}}
+                      </td>
+                    </tr>
+                  </tbody>
+                  {% endif %}
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-bg-9" style="margin-top:15px; margin-bottom:15px;">
+          <div class="card ">
+            <div class="card-header">
+              <h2 class="card-title">Semester 08</h2>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table tablesorter " id="">
+                  <thead class=" text-primary">
+                    <tr>
+                      <th style="color: #17a2b8;">
+                        Course Code
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Course Name
+                      </th>
+                      <th style="color: #17a2b8;">
+                        Credit Hours
+                      </th>
+                    </tr>
+                  </thead>
+                  {% for data in myresult %}
+                  {% if data.offer_in == "8th" %}
+                  <tbody>
+                    <tr>
+                      <td>
+                        {{data.course_no}}
+                      </td>
+                      <td>
+                        {{data.course_title}}
+                      </td>
+                      <td>
+                        {{data.credit_hours}}
+                      </td>
+                    </tr>
+                  </tbody>
+                  {% endif %}
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

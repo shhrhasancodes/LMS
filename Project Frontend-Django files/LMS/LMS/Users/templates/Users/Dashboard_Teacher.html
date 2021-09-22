@@ -1,0 +1,255 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Collapsible sidebar using Bootstrap 4</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static 'Users/Dashboard.css' %}">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h2>Learning Management System</h2>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="{% url 'dashboard-teacher' %}"><i class="fas fa-home mr-2"></i>Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'dashboard-courses' %}"><i class="fas fa-clipboard mr-2"></i>My Courses</a>
+                </li>
+                <li>
+                    <a href="{% url 'dashboard-add-courses' %}"><i class="fas fa-clipboard-check mr-2"></i>Add Course
+                        Material</a>
+                </li>
+                <li>
+                    <a href="{% url 'dashboard-add-marks' %}"><i class="fas fa-clipboard-list mr-2"></i>Add Marks</a>
+                </li>
+                <li>
+                    <a href="{% url 'dashboard-attendence' %}"><i class="fas fa-user-check mr-2"></i>Add Attendance</a>
+                </li>
+                <li>
+                    <a href="{% url 'dashboard-add-notification' %}"><i class="fas fa-bullhorn mr-2"></i>Add
+                        Notifications</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <button type="button" class="btn btn-info">
+                        <a href="{% url 'login-student' %}">Logout</a>
+                    </button>
+                </div>
+            </nav>
+
+            <div class="container">
+                <div class="section-2">
+                    <h1 class="mb-4">
+                        Personal Details
+                    </h1>
+                </div>
+                {% for data in myresult %}
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h6><b>
+                                        Name:
+                                    </b></h6>
+                                <label>
+                                    {{data.name}}
+                                </label>
+                            </div>
+                            <div class="col">
+                                <h6><b>
+                                        Father Name:
+                                    </b></h6>
+                                <label>
+                                    {{data.father_name}}
+                                </label>
+                            </div>
+                            <div class="col">
+                                <h6><b>
+                                        Phone no:
+                                    </b></h6>
+                                <label>
+                                    {{data.phone_no}}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6><b>
+                                        Cnic:
+                                    </b></h6>
+                                <label>
+                                    {{data.cnic}}
+                                </label>
+                            </div>
+                            <div class="col">
+                                <h6><b>
+                                        Address:
+                                    </b></h6>
+                                <label>
+                                    {{data.address}}
+                                </label>
+                            </div>
+                            <div class="col">
+                                <h6><b>
+                                        Email:
+                                    </b></h6>
+                                <label>
+                                    {{data.email}}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6><b>
+                                        Gender:
+                                    </b></h6>
+                                <label>
+                                    {{data.gender}}
+                                </label>
+                            </div>
+                            <div class="col">
+                                <h6><b>
+                                        Date of Birth:
+                                    </b></h6>
+                                <label>
+                                    {{data.DOB}}
+                                </label>
+                            </div>
+                            <div class="col">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-2">
+                    <h1 class="mb-4">
+                        University Details
+                    </h1>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h6><b>
+                                        Teacher Id:
+                                    </b></h6>
+                                <label>
+                                    {{data.teacher_id}}
+                                </label>
+                            </div>
+                            <div class="col">
+                                <h6><b>
+                                        Shift:
+                                    </b></h6>
+                                <label>
+                                    {{data.shift}}
+                                </label>
+                            </div>
+                            <div class="col">
+                                <h6><b>
+                                        Depart-Name:
+                                    </b></h6>
+                                <label>
+                                    {{data.dept_name}}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6><b>
+                                        Salary:
+                                    </b></h6>
+                                <label>
+                                    {{data.salary}}
+                                </label>
+                            </div>
+                            <div class="col">
+                                <h6><b>
+                                        Rank:
+                                    </b></h6>
+                                <label>
+                                    {{data.rank}}
+                                </label>
+                            </div>
+                            <div class="col">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <!-- Popper.JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar, #content').toggleClass('active');
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('student/', views.login_Student, name='login-student'),
+    path('teacher/', views.login_Teacher, name='login-teacher'),
+    path('student/dashboard/', views.student_dashboard, name='dashboard-student'),
+    path('student/transcript/', views.student_transcript,
+         name='dashboard-transcript'),
+    path('student/course-enrolled/', views.student_course_enrolled,
+         name='dashboard-course-enrolled'),
+    path('student/study-plan/', views.student_study_plan,
+         name='dashboard-study-plan'),
+    path('student/course-material/', views.student_course_material,
+         name='dashboard-course-material'),
+    path('student/attendance/', views.student_attendance,
+         name='dashboard-attendance'),
+    path('student/notifications/', views.student_notifications,
+         name='dashboard-notifications'),
+    path('teacher/dashboard/', views.teacher_dashboard, name='dashboard-teacher'),
+    path('teacher/courses/', views.teacher_courses, name='dashboard-courses'),
+    path('teacher/add-courses/', views.teacher_add_courses,
+         name='dashboard-add-courses'),
+    path('teacher/add-marks/', views.teacher_add_marks,
+         name='dashboard-add-marks'),
+    path('teacher/add-attendence/', views.teacher_add_attendence,
+         name='dashboard-attendence'),
+    path('teacher/add-notification/', views.teacher_add_notification,
+         name='dashboard-add-notification'),
+]

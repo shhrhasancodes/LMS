@@ -1,0 +1,88 @@
+{% extends "Users/teacher_base.html"%}
+{% block content %}
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h2>
+                Learning Management System
+            </h2>
+        </div>
+        <ul class="list-unstyled components">
+            <li>
+                <a href="{% url 'dashboard-teacher' %}"><i class="fas fa-home mr-2"></i>Home</a>
+            </li>
+            <li>
+                <a href="{% url 'dashboard-courses' %}"><i class="fas fa-clipboard mr-2"></i>My Courses</a>
+            </li>
+            <li>
+                <a href="{% url 'dashboard-add-courses' %}"><i class="fas fa-clipboard-check mr-2"></i>Add Course
+                    Material</a>
+            </li>
+            <li class="active">
+                <a href="{% url 'dashboard-add-marks' %}"><i class="fas fa-clipboard-list mr-2"></i>Add Marks</a>
+            </li>
+            <li>
+                <a href="{% url 'dashboard-attendence' %}"><i class="fas fa-user-check mr-2"></i>Add Attendance</a>
+            </li>
+            <li>
+                <a href="{% url 'dashboard-add-notification' %}"><i class="fas fa-bullhorn mr-2"></i>Add
+                    Notifications</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button type="button" class="btn btn-info">
+                    <a href="{% url 'login-student' %}">Logout</a>
+                </button>
+            </div>
+        </nav>
+
+        <div class="container">
+            <form action="{% url 'dashboard-add-marks' %}" method="POST">
+                {% csrf_token %}
+                <h1 class="mb-4">
+                    Add Marks
+                </h1>
+                <div class="form-group">
+                    <div class="row mt-4">
+                        <div class="col-xl-3 form-group">
+                            <label for="seatno"><b>Seat No</b></label>
+                            <input type="text" class="form-control" placeholder="Enter EB no of Student" name="seatno"
+                                id="seatno" required>
+                        </div>
+                        <div class="col-xl-3 form-group">
+                            <label for="courseno"><b>Course No</b></label>
+                            <input type="text" class="form-control" placeholder="Enter Course no" name="courseno"
+                                id="courseno" required>
+                        </div>
+                        <div class="col-xl-3 form-group">
+                            <label for="marks"><b>GPA</b></label>
+                            <input type="text" class="form-control" placeholder="Enter GPA" name="marks" id="marks"
+                                required>
+                        </div>
+                        <div class="col-xl-3 form-group">
+                            <label for="semester"><b>Semester</b></label>
+                            <input type="text" class="form-control" placeholder="Enter Semester No" name="semester"
+                                id="semester" required>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-success" value="Add Marks">
+                {% if error %}
+                <p class="text-center mt-3">
+                    {{error}}
+                </p>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

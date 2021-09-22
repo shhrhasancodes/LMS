@@ -1,0 +1,43 @@
+{% extends "Users/base.html"%}
+{% block content %}
+<div id="bg-cover-image" class="login-page">
+    <div class="container">
+        <form action="{% url 'dashboard-student' %}" method="POST">
+            {% csrf_token %}
+            <div class="login-form">
+                <div class="row">
+                    <div class="col-xl-4 offset-xl-4">
+                        <div class="col-xl-12 form-group">
+                            <h1 class="text-center">
+                                Student Login
+                            </h1>
+                        </div>
+                        <div class="col-xl-12 form-group">
+                            <label for="Username" class="col-form-label font-weight-bold">Username</label>
+                            <input placeholder="Enter Your Username " type="text" name="userid" id="Username"
+                                class="form-control font-weight-bold">
+                        </div>
+                        <div class="col-xl-12 form-group">
+                            <label for="Password" class="col-form-label font-weight-bold">Password</label>
+                            <input placeholder="Enter Your Password" type="password" name="password" id="Password"
+                                class="form-control font-weight-bold">
+                        </div>
+                        <div class="col-xl-12">
+                            <div class=" form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="Remember-me">
+                                <label class="form-check-label" for="Remember-me">Remember Me</label>
+                                <a href="{% url 'login-teacher' %}" class="float-right text-light"> Login as a Teacher?
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-12 form-group text-center">
+                            <hr>
+                            <input type="submit" value="Login" class="btn btn-light">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
